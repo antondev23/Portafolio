@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { StaticImage } from "gatsby-plugin-image";
 import { motion } from "framer-motion";
+import ScrollIndicator from "./scrollIndicador";
 
 
 
@@ -34,6 +35,7 @@ const Hero = () => {
             En este portfolio encontrarás una selección de mis proyectos y habilidades en software y desarrollo web.
 
           </p>
+         
           <div className="container-fluid flex flex-row gap-4">
             <a href="https://www.instagram.com/anton.ort03/" target="_blank" rel="noopener noreferrer">
               <StaticImage className="w-4 h-4 md:w-8 md:h-8 object-contain rounded-md shadow-sm hover:scale-115 transition-transform duration-200 mt-5" src="../images/instagram.png">
@@ -47,10 +49,11 @@ const Hero = () => {
               <StaticImage className=" bg-white w-4 h-4 md:w-8 md:h-8 object-contain rounded-md shadow-sm hover:scale-115 transition-transform duration-200 mt-5" src="../images/github.png">
               </StaticImage>
             </a>
+
           </div>
 
           <div className="scroll">
-            <motion.div
+            {/* <motion.div
               className="w-6 h-10 border-2 border-gray-500 rounded-full flex items-start justify-center mt-8 mx-auto"
               animate={{ y: [0, 8, 0], opacity: [0.55, 1, 0.55] }}
               transition={{
@@ -68,8 +71,13 @@ const Hero = () => {
                   repeat: Infinity,
                 }}
               />
-            </motion.div>
+            </motion.div> */}
+
+            <ScrollIndicator />
+
           </div>
+
+
 
 
         </div>
