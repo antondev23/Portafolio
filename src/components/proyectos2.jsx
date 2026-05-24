@@ -66,7 +66,7 @@ export default function Proyectos2() {
   const [error, setError] = React.useState(null);
 
   React.useEffect(() => {
-    fetch("http://localhost:3001/api/projects")
+    fetch(`${process.env.GATSBY_API_URL}/api/projects`)
       .then((res) => {
         if (!res.ok) {
           throw new Error("Error al cargar los proyectos");
