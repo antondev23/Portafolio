@@ -8,7 +8,12 @@ const ProjectsPage = () => {
     return (
         <main className="min-h-screen px-6 py-12 bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 font-sans">
             <Nav />
+
             <div className="container mx-auto">
+                <div className="text2 text-center">
+                    <p className="text-2xl">Construyendo el futuro, un proyecto a la vez 🚀</p>
+                    <p className="text-red-400 text-2xl">¿Quieres ver lo que he creado?</p>
+                </div>
                 <Proyectos2 />
             </div>
             <Footer />

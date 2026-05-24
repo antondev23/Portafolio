@@ -89,17 +89,16 @@ const Proyectos = () => {
 
   return (
     <section className="mx-auto mt-12 max-w-6xl px-4">
-      <h2 className="mb-12 text-2xl font-semibold">{experience.title}</h2>
 
       <div className="relative pb-8">
-        <div className="absolute left-1/2 top-0 h-full w-1 -translate-x-1/2 bg-gradient-to-b from-red-400 to-blue-400" />
+        <div className="absolute left-1/2 top-0 hidden md:block h-full w-1 -translate-x-1/2 bg-gradient-to-b from-red-400 to-blue-400" />
 
-        <div className="relative z-10 space-y-12">
+        <div className="relative z-10 space-y-8 md:space-y-12">
           {experience.entries.map((item, index) => (
             <motion.div
               key={`${item.title}-${item.date}`}
-              className={`flex items-center ${
-                index % 2 === 0 ? "flex-row" : "flex-row-reverse"
+              className={`flex flex-col md:flex-row md:items-center ${
+                index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
               }`}
               variants={
                 index % 2 === 0 ? timelineVariants : timelineVariantsRight
@@ -110,17 +109,17 @@ const Proyectos = () => {
               transition={{ duration: 0.6, ease: "easeOut" }}
             >
               <div
-                className={`w-[calc(50%-2rem)] ${
-                  index % 2 === 0 ? "pr-8" : "pl-8"
+                className={`w-full md:w-[calc(50%-2rem)] ${
+                  index % 2 === 0 ? "md:pr-8" : "md:pl-8"
                 }`}
               >
                 <div className="overflow-hidden rounded-lg bg-gray-50 shadow-md dark:bg-gray-800">
-                  <div className="p-6">
-                    <span className="mb-2 inline-block rounded-full bg-red-400 px-3 py-1 text-sm font-semibold text-white">
+                  <div className="p-4 md:p-6">
+                    <span className="mb-2 inline-block rounded-full bg-red-400 px-3 py-1 text-xs md:text-sm font-semibold text-white">
                       {item.date}
                     </span>
-                    <h3 className="mb-3 text-lg font-bold">{item.title}</h3>
-                    <ul className="list-disc space-y-2 pl-5 text-sm text-gray-600 dark:text-gray-400">
+                    <h3 className="mb-3 text-base md:text-lg font-bold">{item.title}</h3>
+                    <ul className="list-disc space-y-2 pl-5 text-xs md:text-sm text-gray-600 dark:text-gray-400">
                       {item.description.map((description) => (
                         <li key={description}>{description}</li>
                       ))}
@@ -129,7 +128,7 @@ const Proyectos = () => {
                 </div>
               </div>
 
-              <div className="flex w-4 flex-shrink-0 justify-center">
+              <div className="flex w-full md:w-4 md:flex-shrink-0 justify-start md:justify-center my-4 md:my-0">
                 <motion.div
                   className="h-4 w-4 rounded-full border-4 border-white bg-red-400 shadow-md dark:border-gray-900"
                   whileHover={{ scale: 1.5 }}
@@ -137,7 +136,7 @@ const Proyectos = () => {
                 />
               </div>
 
-              <div className="w-[calc(50%-2rem)]" />
+              <div className="hidden md:block md:w-[calc(50%-2rem)]" />
             </motion.div>
           ))}
         </div>

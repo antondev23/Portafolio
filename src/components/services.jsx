@@ -41,7 +41,6 @@ const Services = () => {
 
   return (
     <div className="container mx-auto px-4 py-8">
-      <h1 className="text-2xl font-semibold mb-6">Servicios</h1>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {/* 3. Itera los datos dinámicos en lugar de JSX fijo */}
         {services.map((service, index) => {
@@ -50,7 +49,7 @@ const Services = () => {
           return (
             <motion.div
               key={service.id}
-              className="relative min-h-48 cursor-pointer overflow-hidden rounded-lg bg-gray-900 bg-cover bg-center p-6 shadow-md"
+              className="relative min-h-40 md:min-h-48 cursor-pointer overflow-hidden rounded-lg bg-gray-900 bg-cover bg-center p-4 md:p-6 shadow-md"
               style={
                 serviceImage
                   ? { backgroundImage: `url(${serviceImage})` }

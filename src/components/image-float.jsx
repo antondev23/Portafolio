@@ -1,65 +1,43 @@
-
 import React from "react";
 import imagenes from "../modules/image-float";
 
 const ImageFloat = () => {
-  const duration = 24; // segundos (ajusta velocidad)
-  const imgSize = "5rem"; // tamaño de la caja de cada imagen (ajusta)
-  // también puedes usar "5rem" en móvil y "6rem" en desktop con media queries abajo
+  // Duplicamos el array para crear el loop infinito sin saltos
+  const items = [...imagenes, ...imagenes];
 
   return (
-    <div className="max-w-6xl mx-auto overflow-hidden relative h-24 md:h-36 mt-12">
-      <div className="w-full h-full relative">
-        {imagenes.map((img, index) => {
-          const delay = -((index * duration) / imagenes.length); // espacio temporal entre imágenes
-          return (
+    <div
+      className="max-w-6xl mx-auto overflow-hidden relative"
+      style={{ maskImage: "linear-gradient(to right, transparent, black 10%, black 90%, transparent)" }}
+    >
+      <div className="flex items-center h-20 md:h-28">
+        <div
+          className="flex items-center gap-8 md:gap-12 shrink-0"
+          style={{
+            animation: "marquee 20s linear infinite",
+            width: "max-content",
+          }}
+        >
+          {items.map((img, index) => (
             <div
               key={index}
-              className="absolute top-1/2 -translate-y-1/2 flex items-center justify-center rounded-lg shadow-lg"
-              style={{
-                // caja fija para cada logo
-                width: "var(--img-w)",
-                height: "var(--img-h)",
-                // variables utilizadas en las keyframes
-                ["--img-w"]: imgSize,
-                ["--img-h"]: imgSize,
-                // animación
-                animationName: "slide",
-                animationTimingFunction: "linear",
-                animationIterationCount: "infinite",
-                animationDuration: `${duration}s`,
-                animationDelay: `${delay}s`,
-                willChange: "transform"
-              }}
+              className="shrink-0 w-12 h-12 md:w-16 md:h-16 flex items-center justify-center"
             >
               <img
                 src={img.src}
                 alt={img.alt}
-                className="object-contain w-4/5 h-4/5"
+                className="object-contain w-full h-full"
                 draggable="false"
               />
             </div>
-          );
-        })}
+          ))}
+        </div>
       </div>
 
       <style>{`
-        /* mueve cada caja desde fuera derecha hasta fuera izquierda */
-        @keyframes slide {
-          0% {
-            transform: translateX(calc(100vw + var(--img-w))) translateY(-50%);
-          }
-          100% {
-            transform: translateX(calc(-1 * var(--img-w))) translateY(-50%);
-          }
-        }
-
-        /* responsive: cajas más pequeñas en móvil */
-        @media (max-width: 640px) {
-          div[style] {
-            --img-w: 4.5rem;
-            --img-h: 4.5rem;
-          }
+        @keyframes marquee {
+          0%   { transform: translateX(0); }
+          100% { transform: translateX(-50%); }
         }
       `}</style>
     </div>
@@ -67,4 +45,3 @@ const ImageFloat = () => {
 };
 
 export default ImageFloat;
-// ...existing code...
