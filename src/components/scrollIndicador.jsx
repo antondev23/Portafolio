@@ -3,7 +3,7 @@ import { motion } from "framer-motion"
 
 const ScrollIndicator = () => {
   return (
-    <div className="flex flex-col items-center gap-2">
+    <div className="flex flex-col items-center gap-2 mt-8">
 
       {/* Mouse */}
       <motion.div
