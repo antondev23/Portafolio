@@ -5,7 +5,7 @@ const ScrollIndicator = () => {
   return (
     <div className="flex flex-col items-center gap-2 mt-8">
       <motion.div
-        className="flex items-center justify-center rounded-full bg-white/10 p-2"
+        className="flex items-center justify-center rounded-full bg-white border border-gray-200 p-2 text-gray-900 shadow-sm dark:bg-white/10 dark:border-white/20 dark:text-white"
         initial={{ opacity: 0, y: -10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
@@ -18,7 +18,7 @@ const ScrollIndicator = () => {
           strokeWidth="2"
           strokeLinecap="round"
           strokeLinejoin="round"
-          className="w-6 h-6 text-white"
+          className="w-6 h-6"
           animate={{ y: [0, 6, 0] }}
           transition={{ duration: 1.2, repeat: Infinity, ease: "easeInOut" }}
         >
