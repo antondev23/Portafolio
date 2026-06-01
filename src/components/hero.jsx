@@ -75,18 +75,14 @@ const Hero = () => {
 
         {/* 6. Redes y CV fuera del <div className="prose"> 
             — prose aplica estilos tipográficos que distorsionan botones e iconos */}
-        <motion.div variants={itemVariants}>
+        <motion.div variants={itemVariants} className="mt-6 flex flex-row flex-wrap items-center justify-center gap-4 mb-4">
           <Redes />
-        </motion.div>
-
-        <motion.div variants={itemVariants} className="mt-4 text-center ">
           <a
             href="https://drive.google.com/file/d/15REwrchJAPHO3pLsIv_yQQpn9vBVcSRD/view?usp=sharing"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 text-sm font-medium text-blue-700 border border-blue-700 rounded-lg px-4 py-2 hover:bg-blue-50 dark:hover:bg-blue-950 transition-colors duration-200"
           >
-            {/* 7. Icono de descarga para reforzar la acción visualmente */}
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
               <polyline points="7 10 12 15 17 10"/>
