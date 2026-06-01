@@ -3,7 +3,7 @@ import React from "react";
 const Formulario = () => {
     return (
         <>
-        <form className="max-w-lg mx-auto mb-0 mt-6 md:mt-8 bg-gray-100 dark:bg-gray-800 p-4 md:p-6 rounded-md shadow-md">
+        <form action="https://formsubmit.co/antonio.ortega0323@gmail.com" method="POST" className="max-w-lg mx-auto mb-0 mt-6 md:mt-8 bg-gray-100 dark:bg-gray-800 p-4 md:p-6 rounded-md shadow-md">
             <div className="mb-4">
                 <label className="block text-xs md:text-sm font-medium mb-2" htmlFor="name">Nombre</label>
                 <input className="w-full px-3 py-2 text-sm border rounded-md focus:outline-none focus:ring focus:border-blue-300" type="text" id="name" name="name" required />
