@@ -17,11 +17,11 @@ const Body = () => {
             
         <Hero />
         <ImageFloat />
-        <h2 className="text-xl md:text-2xl font-semibold mt-8 md:mt-12">Mis Servicios</h2>
+        <h2 className="text-xl md:text-2xl font-semibold mt-8 md:mt-12 text-center text-red-400">Mis Servicios</h2>
         <Services />
-        <h2 className="text-xl md:text-2xl font-semibold mt-8 md:mt-12">Mis Proyectos</h2>
+        <h2 className="text-xl md:text-2xl font-semibold mt-8 md:mt-12 text-center text-red-400">Mis Proyectos</h2>
         <Proyectos2 />
-        <h2 className="text-xl md:text-2xl font-semibold mt-8 md:mt-12">Experiencia</h2>
+        <h2 className="text-xl md:text-2xl font-semibold mt-8 md:mt-12 text-center text-red-400">Experiencia</h2>
         <Proyectos />
         <div className="text-center mt-8 md:mt-12 px-4">
           <p className="text-base md:text-lg mb-4">¿Quieres ponerte en contacto conmigo? ¡Genial! 🚀</p>

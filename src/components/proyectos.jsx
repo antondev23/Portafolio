@@ -97,7 +97,7 @@ const Proyectos = () => {
           {experience.entries.map((item, index) => (
             <motion.div
               key={`${item.title}-${item.date}`}
-              className={`flex flex-col md:flex-row md:items-center ${
+              className={`relative flex flex-col md:flex-row md:items-center ${
                 index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
               }`}
               variants={
@@ -128,15 +128,13 @@ const Proyectos = () => {
                 </div>
               </div>
 
-              <div className="flex w-full md:w-4 md:flex-shrink-0 justify-start md:justify-center my-4 md:my-0">
-                <motion.div
-                  className="h-4 w-4 rounded-full border-4 border-white bg-red-400 shadow-md dark:border-gray-900"
-                  whileHover={{ scale: 1.5 }}
-                  transition={{ duration: 0.3 }}
-                />
-              </div>
-
               <div className="hidden md:block md:w-[calc(50%-2rem)]" />
+
+              <motion.div
+                className="relative mx-auto h-4 w-4 rounded-full border-4 border-white bg-red-400 shadow-md dark:border-gray-900 md:absolute md:left-1/2 md:top-1/2 md:-translate-x-1/2 md:-translate-y-1/2"
+                whileHover={{ scale: 1.5 }}
+                transition={{ duration: 0.3 }}
+              />
             </motion.div>
           ))}
         </div>
