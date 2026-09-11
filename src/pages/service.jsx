@@ -9,8 +9,6 @@ import ScrollIndicator from '../components/scrollIndicador';
 const ServicePage = () => {
     return (
         <>
-
-
             <Nav />
             <main className="min-h-screen px-6 py-12 bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 font-sans">
                 <div className="container mx-auto  ">

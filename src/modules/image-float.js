@@ -1,45 +1,61 @@
+import tailwind from "../images/carrusel/tailwind.svg";
+import gatsby from "../images/carrusel/gtasby.svg";
+import bootstrap from "../images/carrusel/bootstrap.svg";
+import wordpress from "../images/carrusel/wordpress.svg";
+import react from "../images/carrusel/react.svg";
+import php from "../images/carrusel/php.svg";
+import nodejs from "../images/carrusel/nodejs.svg";
+import javascript from "../images/carrusel/javascript.svg";
+import css from "../images/carrusel/css.svg";
+import html from "../images/carrusel/html-5.svg";
+import vite from "../images/carrusel/vite.svg";
+
 const imagenes = [
 
     {
-        src: 'https://i.postimg.cc/W4KRzwdJ/tailwindcss.png',
+        src: tailwind,
         alt: 'Tailwind CSS',
     },
     {
-        src: 'https://i.postimg.cc/Gp9wb5mK/icon.png',
+        src: gatsby,
         alt: 'Gatsby',
     },
     {
-        src: 'https://i.postimg.cc/fbknMrRf/bootstrap.png',
+        src: bootstrap,
         alt: 'Bootstrap',
     },
     {
-        src: 'https://i.postimg.cc/7Lcvhn52/wordpress.png',
+        src: wordpress,
         alt: 'wordpress',
     },
     {
-        src: 'https://i.postimg.cc/3wW53cxB/react.png',
+        src: react,
         alt: 'React',
     },
     {
-        src: 'https://i.postimg.cc/mkfnJx9Y/php.png',
+        src: php,
         alt: 'php',
     },
     {
-        src: 'https://i.postimg.cc/Fz568tSj/nodejs.png',
+        src: nodejs,
         alt: 'Node.js',
 
     },
     {
-        src: 'https://i.postimg.cc/HLjDThkt/js.png',
+        src: javascript,
         alt: 'JavaScript',
     },
     {
-        src: 'https://i.postimg.cc/Bb9zkWFD/css-3.png',
+        src: css,
         alt: 'CSS3',
     },
     {
-        src: 'https://i.postimg.cc/kG3HzrSK/html-5.png',
+        src: html,
         alt: 'HTML5',
+    },
+    {
+        src: vite,
+        alt: 'Vite',
     }
 
 ]

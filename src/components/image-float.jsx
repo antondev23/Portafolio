@@ -26,6 +26,8 @@ const ImageFloat = () => {
               <img
                 src={img.src}
                 alt={img.alt}
+                width={64}
+                height={64}
                 className="object-contain w-full h-full"
                 draggable="false"
               />

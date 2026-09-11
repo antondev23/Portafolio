@@ -2,6 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import ScrollIndicator from "./scrollIndicador";
 import Redes from "./redes";
+import { StaticImage } from "gatsby-plugin-image";
 
 // 1. Variantes de animación extraídas fuera del componente
 //    (evita recrearlas en cada render)
@@ -35,12 +36,16 @@ const Hero = () => {
       >
         {/* 3. Atributos de rendimiento: loading="lazy" + fetchpriority
             fetchpriority="high" porque es la imagen principal (LCP)         */}
-        <img
-          src="https://i.postimg.cc/qvcJXbF5/Gemini-Generated-Image-8jd81d8jd81d8jd8.png"
-          alt="Foto de Antonio Ortega"
+        <StaticImage
+          src="../images/perfil.webp"
+          alt="Antonio Ortega"
           width={336}
-          height={336}
-          className="rounded-lg shadow-lg w-full max-w-sm md:w-84 md:h-84 object-cover sm:w-20 sm:h-50"
+          height={436}
+          quality={100}
+          placeholder="none"
+          formats={["auto", "webp"]}
+          loading="eager"
+          className="rounded-lg shadow-lg w-full max-w-sm object-cover"
         />
       </motion.div>
 
@@ -84,9 +89,9 @@ const Hero = () => {
             className="inline-flex items-center gap-2 text-sm font-medium text-blue-700 border border-blue-700 rounded-lg px-4 py-2 hover:bg-blue-50 dark:hover:bg-blue-950 transition-colors duration-200"
           >
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
-              <polyline points="7 10 12 15 17 10"/>
-              <line x1="12" y1="15" x2="12" y2="3"/>
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+              <polyline points="7 10 12 15 17 10" />
+              <line x1="12" y1="15" x2="12" y2="3" />
             </svg>
             Ver mi CV
           </a>
