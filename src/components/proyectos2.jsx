@@ -7,6 +7,9 @@ const ProjectItem = ({ project, index }) => {
     target: ref,
     offset: ["start end", "end center"],
   });
+  const projectImage = project.image?.startsWith("/")
+    ? `${process.env.GATSBY_API_URL}${project.image}`
+    : project.image;
 
   return (
     <article className="relative flex min-h-[50vh] md:min-h-[55vh] items-center justify-center px-4">
@@ -22,9 +25,9 @@ const ProjectItem = ({ project, index }) => {
           Proyecto {index + 1} - {project.date}
         </span>
 
-        {project.image && (
+        {projectImage && (
           <img
-            src={project.image}
+            src={projectImage}
             alt={project.title}
             className="mt-4 h-40 md:h-48 w-full rounded-md object-cover"
           />
