@@ -82,12 +82,7 @@ export default function Experience() {
   const [error, setError] = React.useState(null);
 
   React.useEffect(() => {
-    const apiUrl =
-      process.env.GATSBY_APIBACKEND_URL ||
-      process.env.APIBACKEND_URL ||
-      "http://localhost:3000";
-
-    fetch(`${apiUrl}/api/experience`)
+    fetch(`${process.env.APIBACKEND_URL}/api/experience`)
       .then((res) => {
         if (!res.ok) {
           throw new Error("Error al cargar la experiencia");
