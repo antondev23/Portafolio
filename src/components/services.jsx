@@ -10,7 +10,12 @@ const Services = () => {
 
   // 2. Al montar el componente, consulta la API
   useEffect(() => {
-    fetch(`${process.env.APIBACKEND_URL}/api/services`)
+    const apiUrl =
+      process.env.GATSBY_APIBACKEND_URL ||
+      process.env.APIBACKEND_URL ||
+      "http://localhost:3000";
+
+    fetch(`${apiUrl}/api/services`)
       .then((res) => res.json())
       .then((data) => {
         setServices(data);

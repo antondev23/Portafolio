@@ -7,7 +7,10 @@ const ProjectItem = ({ project, index }) => {
     target: ref,
     offset: ["start end", "end center"],
   });
-  const apiUrl = process.env.APIBACKEND_URL;
+  const apiUrl =
+    process.env.GATSBY_APIBACKEND_URL ||
+    process.env.APIBACKEND_URL ||
+    "http://localhost:3000";
   const projectImage = project.image?.startsWith("http")
     ? project.image
     : `${apiUrl}/img/${project.image}`;
@@ -80,7 +83,12 @@ export default function Proyectos2() {
   const [error, setError] = React.useState(null);
 
   React.useEffect(() => {
-    fetch(`${process.env.APIBACKEND_URL}/api/projects`)
+    const apiUrl =
+      process.env.GATSBY_APIBACKEND_URL ||
+      process.env.APIBACKEND_URL ||
+      "http://localhost:3000";
+
+    fetch(`${apiUrl}/api/projects`)
       .then((res) => {
         if (!res.ok) {
           throw new Error("Error al cargar los proyectos");

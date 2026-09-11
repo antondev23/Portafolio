@@ -51,7 +51,12 @@ const Proyectos = () => {
   const [error, setError] = React.useState(null);
 
   React.useEffect(() => {
-    fetch(`${process.env.APIBACKEND_URL}/api/experience`)
+    const apiUrl =
+      process.env.GATSBY_APIBACKEND_URL ||
+      process.env.APIBACKEND_URL ||
+      "http://localhost:3000";
+
+    fetch(`${apiUrl}/api/experience`)
       .then((res) => {
         if (!res.ok) {
           throw new Error("Error al cargar la experiencia");
