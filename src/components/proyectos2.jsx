@@ -37,6 +37,16 @@ const ProjectItem = ({ project, index }) => {
         <p className="mt-3 text-sm md:text-base text-gray-600 dark:text-gray-300">
           {project.description}
         </p>
+        <p>
+          <a
+            href={project.link}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-4 inline-block text-sm font-medium text-red-400 hover:underline"
+          >
+            Ver proyecto
+          </a>
+        </p>
       </motion.div>
 
       <figure className="sticky top-24 ml-6 hidden h-20 w-20 shrink-0 items-center justify-center md:flex">
