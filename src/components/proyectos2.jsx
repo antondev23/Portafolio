@@ -7,9 +7,10 @@ const ProjectItem = ({ project, index }) => {
     target: ref,
     offset: ["start end", "end center"],
   });
-  const projectImage = project.image?.startsWith("/")
-    ? `${process.env.GATSBY_API_URL}${project.image}`
-    : project.image;
+  const apiUrl = process.env.GATSBY_API_URL;
+  const projectImage = project.image?.startsWith("http")
+    ? project.image
+    : `${apiUrl}/img/${project.image}`;
 
   return (
     <article className="relative flex min-h-[50vh] md:min-h-[55vh] items-center justify-center px-4">
