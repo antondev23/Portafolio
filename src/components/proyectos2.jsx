@@ -14,9 +14,13 @@ const ProjectItem = ({ project, index }) => {
 
   return (
     <article className="relative flex min-h-[50vh] md:min-h-[55vh] items-center justify-center px-4">
-      <motion.div
+      <motion.a
         ref={ref}
-        className="w-full max-w-xl rounded-lg border border-gray-200 bg-white p-4 md:p-8 shadow-md dark:border-gray-700 dark:bg-gray-800"
+        href={project.link}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label={`Ver proyecto: ${project.title}`}
+        className="group w-full max-w-xl cursor-pointer rounded-lg border border-gray-200 bg-white p-4 shadow-md transition hover:-translate-y-1 hover:shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-red-400 focus-visible:ring-offset-2 dark:border-gray-700 dark:bg-gray-800 dark:focus-visible:ring-offset-gray-900 md:p-8"
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ amount: 0.4 }}
@@ -38,17 +42,10 @@ const ProjectItem = ({ project, index }) => {
         <p className="mt-3 text-sm md:text-base text-gray-600 dark:text-gray-300">
           {project.description}
         </p>
-        <p>
-          <a
-            href={project.link}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="mt-4 inline-block text-sm font-medium text-red-400 hover:underline"
-          >
-            Ver proyecto
-          </a>
+        <p className="mt-4 text-sm font-medium text-red-400 group-hover:underline">
+          Ver proyecto
         </p>
-      </motion.div>
+      </motion.a>
 
       <figure className="sticky top-24 ml-6 hidden h-20 w-20 shrink-0 items-center justify-center md:flex">
         <svg width="75" height="75" viewBox="0 0 100 100">
@@ -109,8 +106,6 @@ export default function Proyectos2() {
   return (
     <section className="mx-auto max-w-6xl px-4">
       <div className="mt-8">
-        <a href="">
-
         {projects.map((project, index) => (
           <ProjectItem
             key={project.id ?? project.title}
@@ -118,7 +113,6 @@ export default function Proyectos2() {
             index={index}
           />
         ))}
-        </a>
       </div>
     </section>
   );
