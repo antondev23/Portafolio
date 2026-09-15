@@ -83,7 +83,7 @@ const Hero = () => {
         <motion.div variants={itemVariants} className="mt-6 flex flex-row flex-wrap items-center justify-center gap-4 mb-4">
           <Redes />
           <a
-            href="https://drive.google.com/file/d/1gTFl3IHuFUPYGOzGUtdlVQoBbWqrPBAm/view?usp=sharing"
+            href="https://drive.google.com/file/d/1aztLGW4E8SgGh9CUAaBu36yzHA_00d-8/view?usp=sharing"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 text-sm font-medium text-blue-700 border border-blue-700 rounded-lg px-4 py-2 hover:bg-blue-50 dark:hover:bg-blue-950 transition-colors duration-200"
