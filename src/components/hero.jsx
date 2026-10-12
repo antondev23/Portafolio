@@ -37,7 +37,7 @@ const Hero = () => {
         {/* 3. Atributos de rendimiento: loading="lazy" + fetchpriority
             fetchpriority="high" porque es la imagen principal (LCP)         */}
         <StaticImage
-          src="../images/perfil.webp"
+          src="../images/perfil2.webp"
           alt="Antonio Ortega"
           width={336}
           height={436}
