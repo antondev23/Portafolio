@@ -1,27 +1,38 @@
 import React from "react";
+import Window from "./window";
 
-const Formulario = () => {
-    return (
-        <>
-        <form action="https://formsubmit.co/antonio.ortega0323@gmail.com" method="POST" className="max-w-lg mx-auto mb-0 mt-6 md:mt-8 bg-gray-100 dark:bg-gray-800 p-4 md:p-6 rounded-md shadow-md">
-            <div className="mb-4">
-                <label className="block text-xs md:text-sm font-medium mb-2" htmlFor="name">Nombre</label>
-                <input className="w-full px-3 py-2 text-sm border rounded-md focus:outline-none focus:ring focus:border-blue-300" type="text" id="name" name="name" required />
-            </div>
-            <div className="mb-4">
-                <label className="block text-xs md:text-sm font-medium mb-2" htmlFor="email">Correo Electrónico</label>
-                <input className="w-full px-3 py-2 text-sm border rounded-md focus:outline-none focus:ring focus:border-blue-300" type="email" id="email" name="email" required />
-            </div>
-            <div className="mb-4">
-                <label className="block text-xs md:text-sm font-medium mb-2" htmlFor="message">Mensaje</label>
-                <textarea className="w-full px-3 py-2 text-sm border border-dashed focus:outline-none focus:ring focus:border-blue-300" id="message" name="message" rows={5} required></textarea>
-            </div>
-            <button className="w-full bg-blue-500 text-white px-4 py-2 text-sm md:text-base shadow-lg shadow-blue-500/50 rounded-md hover:bg-blue-600 transition-colors duration-200" type="submit">Enviar</button>
-        </form>
-        
-        </>
-    )
-}
+const Field = ({ id, label, hint, children }) => (
+  <div>
+    <label htmlFor={id} className="field-label">
+      <span className="tok-k">const </span>
+      <span className="tok-v">{label}</span>
+      <span className="tok-o"> =</span>
+      {hint && <span className="tok-c">{` // ${hint}`}</span>}
+    </label>
+    {children}
+  </div>
+);
+
+const Formulario = () => (
+  <Window title="nuevo-mensaje.js" meta="formsubmit" className="mx-auto mt-4 max-w-2xl text-left">
+    <form action="https://formsubmit.co/antonio.ortega0323@gmail.com" method="POST" className="space-y-6 p-6 md:p-8">
+      <Field id="name" label="nombre">
+        <input id="name" className="field" type="text" name="name" placeholder='"Tu nombre"' autoComplete="name" required />
+      </Field>
+      <Field id="email" label="email">
+        <input id="email" className="field" type="email" name="email" placeholder='"tu@correo.com"' autoComplete="email" required />
+      </Field>
+      <Field id="message" label="mensaje" hint="cuéntame tu idea">
+        <textarea id="message" className="field" name="message" rows={6} placeholder='"Hola Antonio, quiero construir…"' required />
+      </Field>
+      <div className="flex flex-col-reverse items-start justify-between gap-4 sm:flex-row sm:items-center">
+        <p className="mono m-0 text-xs text-[var(--dim)]">{"// todos los campos son obligatorios"}</p>
+        <button className="button-primary w-full sm:w-auto" type="submit">
+          enviar(mensaje) <span aria-hidden="true">→</span>
+        </button>
+      </div>
+    </form>
+  </Window>
+);
 
 export default Formulario;
-

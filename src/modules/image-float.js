@@ -26,7 +26,7 @@ const imagenes = [
     },
     {
         src: wordpress,
-        alt: 'wordpress',
+        alt: 'WordPress',
     },
     {
         src: react,
@@ -34,7 +34,7 @@ const imagenes = [
     },
     {
         src: php,
-        alt: 'php',
+        alt: 'PHP',
     },
     {
         src: nodejs,

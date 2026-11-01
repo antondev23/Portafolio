@@ -1,41 +1,28 @@
-import React from "react"
-import { motion } from "framer-motion"
+import React from "react";
+import { Link } from "gatsby";
 
-const WhatsAppCTA = () => {
-    const phoneNumber = "34678244907"
-    const message = "Hola, me gustaría hablar sobre un proyecto contigo."
-    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`
+const WHATSAPP_MESSAGE_URL =
+  "https://wa.me/34678244907?text=Hola%20Antonio%2C%20me%20gustar%C3%ADa%20hablar%20sobre%20un%20proyecto.";
 
-    return (
-        <div className="bg-gray-50 border border-gray-200 rounded-2xl p-4 md:p-6 flex flex-col md:flex-row md:items-start gap-4 max-w-xl mx-auto mt-4 md:mt-2">
-            <motion.svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-                className="w-6 h-6 text-green-600 shrink-0 mt-1"
-                animate={{ y: [0, -4, 0] }}
-                transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
-            >
-                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" />
-                <path d="M12 0C5.373 0 0 5.373 0 12c0 2.136.564 4.14 1.534 5.876L0 24l6.29-1.512A11.944 11.944 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.006-1.371l-.36-.214-3.733.897.944-3.64-.235-.374A9.818 9.818 0 1112 21.818z" />
-            </motion.svg>
-            <div className="flex-1">
-                
-                <p className="text-xs md:text-sm text-gray-500 leading-relaxed mb-4">
-                    A veces las mejores ideas necesitan una conversación para tomar forma.
-                    Escríbeme por WhatsApp y en una llamada lo dejamos claro.
-                </p>
-                <a
-                href={whatsappUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-xs md:text-sm font-medium text-green-700 border border-green-700 rounded-lg px-4 py-2 hover:bg-green-50 transition-colors duration-200"
-        >
-                Hablemos por WhatsApp
-            </a>
-        </div>
-    </div >
-  )
-}
+/**
+ * Llamada a la acción de contacto.
+ * `showForm` añade un botón secundario hacia la página de contacto.
+ */
+const WhatsAppCTA = ({ showForm = false, align = "center" }) => (
+  <div className={`mt-9 flex flex-col gap-4 ${align === "center" ? "items-center" : "items-start"}`}>
+    <div className={`flex flex-wrap gap-3 ${align === "center" ? "justify-center" : ""}`}>
+      <a href={WHATSAPP_MESSAGE_URL} target="_blank" rel="noreferrer" className="button-primary">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z" /></svg>
+        Escríbeme por WhatsApp
+      </a>
+      {showForm && (
+        <Link to="/contact" className="button-outline">
+          Usar el formulario <span aria-hidden="true">→</span>
+        </Link>
+      )}
+    </div>
+    <p className="mono m-0 text-xs text-[var(--dim)]">{"// normalmente respondo en menos de 24 horas"}</p>
+  </div>
+);
 
-export default WhatsAppCTA
+export default WhatsAppCTA;

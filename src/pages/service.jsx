@@ -1,35 +1,33 @@
-import React from 'react';
-import Nav from '../components/nav';
-import Services from '../components/services';
-import Footer from '../components/footer';
-import WhatsAppCTA from '../components/whatsappCTA';
-import ScrollIndicator from '../components/scrollIndicador';
+import React from "react";
+import Nav from "../components/nav";
+import Services from "../components/services";
+import Footer from "../components/footer";
+import WhatsAppCTA from "../components/whatsappCTA";
+import SectionHeader from "../components/section-header";
+import Seo from "../components/seo";
 
+const ServicePage = () => (
+  <div className="site-shell">
+    <Nav />
+    <main className="page-wrap content-page">
+      <div className="content-intro">
+        <SectionHeader
+          as="h1"
+          label="servicios"
+          title={<>Lo que puedo <span className="accent">construir contigo</span>.</>}
+          lead="Desde la primera línea de código hasta el despliegue: soluciones a medida, rápidas y fáciles de mantener."
+        />
+      </div>
+      <Services />
+      <div className="mt-20 border-t border-[var(--line)] py-20 text-center">
+        <h2 className="section-heading">¿Tienes un reto?</h2>
+        <WhatsAppCTA showForm />
+      </div>
+    </main>
+    <Footer />
+  </div>
+);
 
-const ServicePage = () => {
-    return (
-        <>
-            <Nav />
-            <main className="min-h-screen px-6 py-12 bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 font-sans">
-                <div className="container mx-auto  ">
-                    <Services />
-                    <div className="text2 text-center">
-                        <p className="text-4xl mb-6">Tengo las manos listas 🤙 y las ideas en llamas 🔥</p>
-                        <p className="text-red-400  text-4xl mb-4">¿Tienes un reto para mí?</p>
-                    </div>
-
-                    <p className="text-xl max-w-3xl mx-auto text-center">No me conformo con lo genérico. Me obsesionan los proyectos que asustan un poco, los que tienen algo que decir. Si tienes una idea rara, una visión ambiciosa o un problema sin resolver — ese es exactamente mi lugar. Aquí tienes lo que puedo hacer por ti</p>
-
-                    <ScrollIndicator />
-
-                    <WhatsAppCTA />
-                </div>
-
-                <Footer />
-
-            </main>
-        </>
-
-    );
-}
 export default ServicePage;
+
+export const Head = () => <Seo title="Servicios" description="Desarrollo web, desarrollo de software y landing pages a medida." />;

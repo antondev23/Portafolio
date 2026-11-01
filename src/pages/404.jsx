@@ -1,49 +1,40 @@
 import * as React from "react"
 import { Link } from "gatsby"
+import Nav from "../components/nav"
+import Footer from "../components/footer"
+import Window from "../components/window"
+import Seo from "../components/seo"
 
-const pageStyles = {
-  color: "#232129",
-  padding: "96px",
-  fontFamily: "-apple-system, Roboto, sans-serif, serif",
-}
-const headingStyles = {
-  marginTop: 0,
-  marginBottom: 64,
-  maxWidth: 320,
-}
+const NotFoundPage = ({ location }) => {
+  const path = location?.pathname || "/ruta-desconocida"
 
-const paragraphStyles = {
-  marginBottom: 48,
-}
-const codeStyles = {
-  color: "#8A6534",
-  padding: 4,
-  backgroundColor: "#FFF4DB",
-  fontSize: "1.25rem",
-  borderRadius: 4,
-}
-
-const NotFoundPage = () => {
   return (
-    <main style={pageStyles}>
-      <h1 style={headingStyles}>Page not found</h1>
-      <p style={paragraphStyles}>
-        Sorry 😔, we couldn’t find what you were looking for.
-        <br />
-        {process.env.NODE_ENV === "development" ? (
-          <>
-            <br />
-            Try creating a page in <code style={codeStyles}>src/pages/</code>.
-            <br />
-          </>
-        ) : null}
-        <br />
-        <Link to="/">Go home</Link>.
-      </p>
-    </main>
+    <div className="site-shell">
+      <Nav />
+      <main className="page-wrap content-page grid place-items-center">
+        <Window title="bash — 404" meta="exit 1" dotColor="var(--syn-prop)" className="w-full max-w-2xl">
+          <div className="terminal-body space-y-2">
+            <p className="m-0">
+              <span className="prompt">~/<span className="path">antonio</span> $</span> <span className="tok-v">cd {path}</span>
+            </p>
+            <p className="m-0 text-[var(--syn-prop)]">bash: cd: {path}: No existe el archivo o el directorio</p>
+            <p className="m-0 text-[var(--dim)]">{"// error 404 — esta página no existe o se ha movido"}</p>
+            <div className="pt-6 font-sans">
+              <h1 className="section-heading">Página no encontrada.</h1>
+              <p className="section-lead mt-4">Puede que el enlace esté roto o que la página se haya movido.</p>
+              <div className="mt-8 flex flex-wrap gap-3">
+                <Link to="/" className="button-primary">cd ~ <span aria-hidden="true">→</span></Link>
+                <Link to="/contact" className="button-outline">Contactar</Link>
+              </div>
+            </div>
+          </div>
+        </Window>
+      </main>
+      <Footer />
+    </div>
   )
 }
 
 export default NotFoundPage
 
-export const Head = () => <title>Not found</title>
+export const Head = () => <Seo title="Página no encontrada" />

@@ -1,119 +1,93 @@
-import React from "react";
-import { motion, useScroll } from "framer-motion";
+import React, { useEffect, useState } from "react";
+import { motion } from "framer-motion";
+import { FetchError, FetchLoading } from "./fetch-state";
 
-const ProjectItem = ({ project, index }) => {
-  const ref = React.useRef(null);
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start end", "end center"],
-  });
-  const apiUrl = process.env.GATSBY_API_URL;
-  const projectImage = project.image?.startsWith("http")
-    ? project.image
-    : `${apiUrl}/img/${project.image}`;
+const getHost = (link) => {
+  try {
+    return new URL(link).host;
+  } catch {
+    return link;
+  }
+};
+
+/* Tarjeta de proyecto: captura dentro de un "navegador" + ficha técnica. */
+const ProjectCard = ({ project, index }) => {
+  const image = project.image?.startsWith("http") ? project.image : `${process.env.GATSBY_API_URL}/img/${project.image}`;
+  const host = getHost(project.link);
 
   return (
-    <article className="relative flex min-h-[50vh] md:min-h-[55vh] items-center justify-center px-4">
-      <motion.a
-        ref={ref}
-        href={project.link}
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label={`Ver proyecto: ${project.title}`}
-        className="group w-full max-w-xl cursor-pointer rounded-lg border border-gray-200 bg-white p-4 shadow-md transition hover:-translate-y-1 hover:shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-red-400 focus-visible:ring-offset-2 dark:border-gray-700 dark:bg-gray-800 dark:focus-visible:ring-offset-gray-900 md:p-8"
-        initial={{ opacity: 0, y: 40 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ amount: 0.4 }}
-        transition={{ duration: 0.55, ease: "easeOut" }}
-      >
-        <span className="text-sm font-semibold text-red-400">
-          Proyecto {index + 1} - {project.date}
-        </span>
+    <motion.article
+      initial={{ opacity: 0, y: 26 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.2 }}
+      transition={{ duration: 0.55 }}
+      className="grid items-center gap-8 lg:grid-cols-[1.15fr_.85fr] lg:gap-12"
+    >
+      <a href={project.link} target="_blank" rel="noreferrer" className="window card-glow group block" aria-label={`Abrir ${project.title}`}>
+        <div className="window-bar">
+          <div className="window-dots" aria-hidden="true"><span /><span /><span /></div>
+          <span className="mono flex min-w-0 flex-1 items-center gap-2 rounded-md border border-[var(--line)] bg-[var(--bg)] px-3 py-1.5 text-[.72rem] text-[var(--muted)]">
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2" /><path d="M8 11V7a4 4 0 0 1 8 0v4" /></svg>
+            <span className="truncate">{host}</span>
+          </span>
+        </div>
+        <div className="overflow-hidden bg-[var(--bg)]">
+          {project.image && (
+            <img
+              src={image}
+              alt={`Captura de ${project.title}`}
+              loading="lazy"
+              className="aspect-[16/10] w-full object-cover object-top transition duration-700 group-hover:scale-[1.03]"
+            />
+          )}
+        </div>
+      </a>
 
-        {projectImage && (
-          <img
-            src={projectImage}
-            alt={project.title}
-            className="mt-4 h-40 md:h-48 w-full rounded-md object-cover"
-          />
+      <div>
+        <p className="mono text-xs text-[var(--accent)]">
+          <span className="text-[var(--dim)]">{"// "}</span>
+          proyecto_0{index + 1} · {project.date}
+        </p>
+        <h3 className="mt-4 text-[clamp(1.8rem,3.4vw,2.4rem)] font-bold tracking-[-.035em]">{project.title}</h3>
+        <p className="mt-4 text-[.98rem] leading-7 text-[var(--muted)]">{project.description}</p>
+
+        {Array.isArray(project.tags) && project.tags.length > 0 && (
+          <ul className="mt-6 flex list-none flex-wrap gap-2 p-0">
+            {project.tags.map((tag) => <li key={tag} className="chip">{tag}</li>)}
+          </ul>
         )}
 
-        <h3 className="mt-2 text-xl md:text-2xl font-bold">{project.title}</h3>
-        <p className="mt-3 text-sm md:text-base text-gray-600 dark:text-gray-300">
-          {project.description}
-        </p>
-        <p className="mt-4 text-sm font-medium text-red-400 group-hover:underline">
-          Ver proyecto
-        </p>
-      </motion.a>
-
-      <figure className="sticky top-24 ml-6 hidden h-20 w-20 shrink-0 items-center justify-center md:flex">
-        <svg width="75" height="75" viewBox="0 0 100 100">
-          <circle
-            cx="50"
-            cy="50"
-            r="30"
-            pathLength="1"
-            className="fill-none stroke-gray-200 stroke-[8] dark:stroke-gray-700"
-          />
-          <motion.circle
-            cx="50"
-            cy="50"
-            r="30"
-            pathLength="1"
-            style={{ pathLength: scrollYProgress }}
-            className="fill-none stroke-red-400 stroke-[8]"
-            strokeLinecap="round"
-          />
-        </svg>
-      </figure>
-    </article>
+        <div className="mt-8 flex flex-wrap gap-3">
+          <a href={project.link} target="_blank" rel="noreferrer" className="button-primary">
+            Ver proyecto <span aria-hidden="true">↗</span>
+          </a>
+        </div>
+      </div>
+    </motion.article>
   );
 };
 
-export default function Proyectos2() {
-  const [projects, setProjects] = React.useState([]);
-  const [loading, setLoading] = React.useState(true);
-  const [error, setError] = React.useState(null);
+const Proyectos2 = () => {
+  const [projects, setProjects] = useState([]);
+  const [error, setError] = useState(false);
 
-  React.useEffect(() => {
+  useEffect(() => {
     fetch(`${process.env.GATSBY_API_URL}/api/projects`)
-      .then((res) => {
-        if (!res.ok) {
-          throw new Error("Error al cargar los proyectos");
-        }
-
-        return res.json();
-      })
-      .then((data) => {
-        setProjects(Array.isArray(data) ? data : []);
-        setLoading(false);
-      })
-      .catch(() => {
-        setError("No se pudieron cargar los proyectos");
-        setLoading(false);
-      });
+      .then((r) => (r.ok ? r.json() : Promise.reject()))
+      .then(setProjects)
+      .catch(() => setError(true));
   }, []);
 
-  if (loading) {
-    return <p className="py-8 text-center">Cargando proyectos...</p>;
-  }
-
-  if (error) {
-    return <p className="py-8 text-center text-red-500">{error}</p>;
-  }
+  if (error) return <FetchError endpoint="/api/projects" message="Los proyectos no están disponibles en este momento." />;
+  if (!projects.length) return <FetchLoading endpoint="/api/projects" />;
 
   return (
-    <section className="mx-auto max-w-6xl px-4">
-      <div className="mt-8">
-        {projects.map((project, index) => (
-          <ProjectItem
-            key={project.id ?? project.title}
-            project={project}
-            index={index}
-          />
-        ))}
-      </div>
-    </section>
+    <div className="mt-14 grid gap-20">
+      {projects.map((project, index) => (
+        <ProjectCard key={project.id ?? project.title} project={project} index={index} />
+      ))}
+    </div>
   );
-}
+};
+
+export default Proyectos2;
