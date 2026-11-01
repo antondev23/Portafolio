@@ -6,9 +6,12 @@
   "keywords": [
     "gatsby"
   ],
+  "engines": {
+    "node": "22.x"
+  },
   "scripts": {
     "develop": "gatsby develop",
-    "start": "gatsby develop",
+    "start": "gatsby serve --host 0.0.0.0 --port 3000",
     "build": "gatsby build",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
