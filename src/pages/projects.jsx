@@ -1,26 +1,14 @@
 import React from "react";
-import Nav from "../components/nav";
-import Proyectos2 from "../components/proyectos2";
-import Footer from "../components/footer";
-import SectionHeader from "../components/section-header";
+import Layout, { PageHeader } from "../components/layout";
 import Seo from "../components/seo";
+import { ContactPost, ProjectPosts } from "../components/feeds";
 
-const ProjectsPage = () => (
-  <div className="site-shell">
-    <Nav />
-    <main className="page-wrap content-page">
-      <div className="content-intro">
-        <SectionHeader
-          as="h1"
-          label="proyectos"
-          title={<>Proyectos que <span className="accent">resuelven problemas</span>.</>}
-          lead="Productos web pensados para ser útiles, rápidos y fáciles de usar."
-        />
-      </div>
-      <Proyectos2 />
-    </main>
-    <Footer />
-  </div>
+const ProjectsPage = ({ location }) => (
+  <Layout location={location}>
+    <PageHeader title="Proyectos" subtitle="Productos web útiles, rápidos y fáciles de usar" />
+    <ProjectPosts />
+    <ContactPost />
+  </Layout>
 );
 
 export default ProjectsPage;
